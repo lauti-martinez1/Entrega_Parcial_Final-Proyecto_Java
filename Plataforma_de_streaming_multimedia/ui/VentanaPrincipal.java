@@ -36,12 +36,12 @@ public class VentanaPrincipal extends JFrame {
         setTitle("Plataforma de Streaming");
         setSize(400, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // Centra la ventana en la pantalla
+        setLocationRelativeTo(null); 
 
         cardLayout = new CardLayout();
         panelContenedor = new JPanel(cardLayout);
 
-        // Agregamos las tres pantallas al contenedor principal
+        
         panelContenedor.add(crearPanelLogin(), "Login");
         panelContenedor.add(crearPanelRegistro(), "Registro");
         panelContenedor.add(crearPanelMenu(), "Menu");
@@ -210,7 +210,7 @@ public class VentanaPrincipal extends JFrame {
         lblBienvenida.setText("¡Hola, " + usuarioLogueado.getNombre() + "!");
         lblPlan.setText("Plan actual: " + nombrePlan);
 
-        historial = new Historial(); // Reiniciamos historial para esta sesión
+        historial = new Historial(); 
 
         if (nombrePlan.equalsIgnoreCase("Premium")) {
             btnMejorarPlan.setEnabled(false);
