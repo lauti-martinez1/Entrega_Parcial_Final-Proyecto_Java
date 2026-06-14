@@ -18,7 +18,7 @@ public class Historial {
 
     public void agregarContenido(Usuario usuario, Contenido contenido) {
         contenidosVistos.add(contenido);
-        db.registrarHistorial(usuario.getId(), contenido.getId()); // ¡Se guarda en SQL!
+        db.registrarHistorial(usuario.getId(), contenido.getId()); 
     }
 
     public void mostrarHistorial() {
