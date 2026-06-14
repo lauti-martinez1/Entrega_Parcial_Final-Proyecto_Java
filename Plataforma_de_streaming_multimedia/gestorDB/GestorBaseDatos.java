@@ -14,7 +14,7 @@ import java.util.List;
 
 public class GestorBaseDatos {
 
-    // --- NUEVO: Iniciar sesión con email y contraseña ---
+   
     public Usuario autenticarUsuario(String email, String password) {
         String sql = "SELECT * FROM usuario WHERE email = ? AND contraseña = ?";
         try (Connection con = ConexionDB.conectar();
@@ -29,7 +29,7 @@ public class GestorBaseDatos {
         return null; // Si no existe o la contraseña está mal
     }
 
-    // --- NUEVO: Registrar usuario y crearle un plan Básico ---
+  
     public boolean registrarUsuario(String nombre, String email, String password) {
         String sqlUser = "INSERT INTO usuario (nombre, email, contraseña) VALUES (?, ?, ?)";
         String sqlSub = "INSERT INTO suscripcion (tipo_plan, precio, id_usuario) VALUES ('Basico', 3000.00, ?)";
@@ -42,7 +42,7 @@ public class GestorBaseDatos {
             psUser.setString(3, password);
             psUser.executeUpdate();
 
-            // Obtenemos el ID que MySQL le asignó automáticamente a este nuevo usuario
+           
             ResultSet rs = psUser.getGeneratedKeys();
             if (rs.next()) {
                 int nuevoId = rs.getInt(1);
@@ -54,13 +54,13 @@ public class GestorBaseDatos {
                 return true;
             }
         } catch (Exception e) {
-            // Esto capturará el error si el email ya existe (porque es UNIQUE en tu base)
+           
             System.out.println("Error al registrar: " + e.getMessage());
         }
         return false;
     }
 
-    // --- NUEVO: Mejorar plan a Premium ---
+    
     public boolean mejorarPlan(int idUsuario) {
         String sql = "UPDATE suscripcion SET tipo_plan = 'Premium', precio = 5000.00 WHERE id_usuario = ?";
         try (Connection con = ConexionDB.conectar();
@@ -71,8 +71,8 @@ public class GestorBaseDatos {
         return false;
     }
 
-    // --- LOS MÉTODOS QUE YA TENÍAS ---
-    public Usuario obtenerUsuario(int id) { /* Ya no lo usaremos para login, pero dejalo por si acaso */ return null; }
+   
+    public Usuario obtenerUsuario(int id) {  return null; }
 
     public Suscripcion obtenerSuscripcion(int idUsuario) {
         String sql = "SELECT * FROM suscripcion WHERE id_usuario = ?";
