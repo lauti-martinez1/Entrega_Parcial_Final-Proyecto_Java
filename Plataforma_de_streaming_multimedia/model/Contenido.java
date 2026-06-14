@@ -13,5 +13,5 @@ public class Contenido {
 
     public int getId() { return id; }
     public String getTitulo() { return titulo; }
-    public String getGenero() { return genero; } // ¡Corregido!
+    public String getGenero() { return genero; }
 }
